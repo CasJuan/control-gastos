@@ -11,9 +11,13 @@ import IconoNuvoGasto from './img/nuevo-gasto.svg'
 
 function App() {
   
-  const [gastos, setGastos] = useState([]);
+  const [gastos, setGastos] = useState([
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
+  ]);
 
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState(
+    Number(localStorage.getItem('presupuesto') ?? 0)
+  );
   const [isValidPresupuesto, setIsValidoPresupuesto] = useState(false);
 
   const [modal, setModal] = useState(false);
@@ -30,6 +34,21 @@ function App() {
       }, 500)
     }
   }, [gastoEditar])
+
+  useEffect(()=> {
+    localStorage.setItem('presupuesto', presupuesto ?? 0)
+  },[presupuesto])
+
+  useEffect(()=> {
+    localStorage.setItem('gastos', JSON.stringify(gastos) ?? [])
+  },[gastos])
+
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0;
+    if(presupuestoLS > 0){
+      setIsValidoPresupuesto(true)
+    }
+  },[])
 
 
   const handleNuevoGasto = () => {
@@ -67,11 +86,17 @@ function App() {
 
   }
 
+  const eliminarGasto = id => {
+    const gastosActualizados = gastos.filter( gasto => gasto.id !== id);
+    setGastos(gastosActualizados);
+  }
+
 
   return (
     <div className = {modal ? 'fijar' : ''} >
       <Header
         gastos = {gastos} 
+        setGastos = {setGastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
