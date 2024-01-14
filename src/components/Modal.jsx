@@ -3,7 +3,7 @@ import Mensaje from './Mensaje';
 import CerrarImg from '../img/cerrar.svg'
 
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar, setGastoEditar }) => {
 
     const [mensaje, setMensaje] = useState('')
 
@@ -26,6 +26,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
 
     const ocultarModal = () => {
         setAnimarModal(false);
+        setGastoEditar({})
 
         setTimeout(() => {
             setModal(false);
