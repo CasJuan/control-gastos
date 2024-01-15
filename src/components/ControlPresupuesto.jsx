@@ -10,18 +10,15 @@ const ControlPresupuesto = ({presupuesto, gastos, setPresupuesto, setGastos, set
 
   useEffect(() => {
 
-    const totalGastado = gastos.reduce( (total, gasto) => gasto.cantidad + total, 0 );
+    const totalGastado = gastos.reduce( (total, gasto ) => gasto.cantidad + total, 0);
 
     const totalDisponible = presupuesto - totalGastado;
 
     //Calculo del porcentaje
-    const nuevoPorcentaje = (((presupuesto - totalDisponible) / presupuesto) * 100).toFixed(2);
+    const nuevoPorcentaje = ( ( (presupuesto - totalDisponible) / presupuesto) * 100).toFixed(2);
 
-
-   
     setDisponible(totalDisponible);
     setGastado(totalGastado);
-
     setTimeout(() => {
       setPorcentaje(nuevoPorcentaje)
     }, 1500);
@@ -36,7 +33,7 @@ const ControlPresupuesto = ({presupuesto, gastos, setPresupuesto, setGastos, set
   }
 
   const handleResetApp = () =>{
-    const resultado = confirm('Desea reseter presupuesto y gastos?');
+    const resultado = confirm('¿Deseas reiniciar presupuesto y gastos?');
     if(resultado){
       setGastos([])
       setPresupuesto(0)
@@ -56,7 +53,7 @@ const ControlPresupuesto = ({presupuesto, gastos, setPresupuesto, setGastos, set
             textColor: porcentaje > 100 ? '#DC2626' : '#3B82F6',
           })}
           value={porcentaje}
-          text={`${porcentaje} Gastado`}
+          text={`${porcentaje}% Gastado`}
         />
       </div>
 
@@ -66,7 +63,7 @@ const ControlPresupuesto = ({presupuesto, gastos, setPresupuesto, setGastos, set
             type="button"
             onClick={handleResetApp}
             >
-            Resetar App
+            Resetear App
           </button>
             <p>
               <span>Presupuesto:</span> {formatearCantidad(presupuesto)}

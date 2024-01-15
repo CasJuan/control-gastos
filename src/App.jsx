@@ -27,7 +27,7 @@ function App() {
   const [gastoEditar, setGastoEditar] = useState({});
 
   const [filtro, setFiltro] = useState('')
-  const [gastosFiltrados, setGastosFiltrado] = useState('')
+  const [gastosFiltrados, setGastosFiltrados] = useState([])
 
   useEffect(() => {
     if(Object.keys(gastoEditar).length > 0 ){
@@ -49,8 +49,8 @@ function App() {
 
   useEffect(() =>{
     if (filtro) {
-      const gastosFiltrados = gastos.filter(gasto => gasto.categoria === filtro);
-      setGastosFiltrado(gastosFiltrados)
+      const gastosFiltrados = gastos.filter( gasto => gasto.categoria === filtro)
+      setGastosFiltrados(gastosFiltrados)
     }
   },[filtro])
 
@@ -82,12 +82,6 @@ function App() {
       gasto.id = generarId();
       gasto.fecha = Date.now();
       setGastos([...gastos, gasto ]);
-    }
-
-    const eliminarGasto = id => {
-      const gastosActualizados = gastos.filter(gasto => gasto.id !== id);
-
-      setGastos(gastosActualizados);
     }
 
     setAnimarModal(false)
