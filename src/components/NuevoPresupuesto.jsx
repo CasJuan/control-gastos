@@ -3,7 +3,7 @@ import Mensaje from "./Mensaje";
 
 
 
-const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidoPresupuesto}) => {
+const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) => {
 
     const [mensaje, setMensaje] = useState('')
 
@@ -18,7 +18,7 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidoPresupuesto})
         }
 
         setMensaje('');
-        setIsValidoPresupuesto(true);
+        setIsValidPresupuesto(true);
         
 
     }
