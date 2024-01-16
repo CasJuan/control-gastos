@@ -1,8 +1,9 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Control de Gastos
 
-Currently, two official plugins are available:
+Bienvenidos a este mini control de gastos, la idea es poder colocar un total y después ir cargando los gastos, donde además se podrá cargar las categorías, las mismas vienen ya predeterminadas, es un futuro una mejora podría ser agregar opción de editar las categorías y además agregar más dinero como ingreso.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Es una aplicación creada a modo de ejercicios de un curso de Udemy donde en el cual estoy practicando React: Hooks, State, MERN, Next.js, Remix Run, Redux, Tailwind CSS, Prisma y mucho más, el curso es de Juan Pablo de la torre Valdez.
+
+
